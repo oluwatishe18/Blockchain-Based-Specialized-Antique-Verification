@@ -1,30 +1,49 @@
+;; Item Registration Contract
+;; Records details of antique objects
 
-;; title: item-registration
-;; version:
-;; summary:
-;; description:
+(define-data-var last-item-id uint u0)
 
-;; traits
-;;
+(define-map items
+  { item-id: uint }
+  {
+    name: (string-utf8 100),
+    description: (string-utf8 500),
+    creation-date: (string-utf8 50),
+    creator: (string-utf8 100),
+    registered-by: principal,
+    registration-date: uint
+  }
+)
 
-;; token definitions
-;;
+(define-public (register-item
+    (name (string-utf8 100))
+    (description (string-utf8 500))
+    (creation-date (string-utf8 50))
+    (creator (string-utf8 100)))
+  (let
+    (
+      (new-id (+ (var-get last-item-id) u1))
+    )
+    (var-set last-item-id new-id)
+    (map-set items
+      { item-id: new-id }
+      {
+        name: name,
+        description: description,
+        creation-date: creation-date,
+        creator: creator,
+        registered-by: tx-sender,
+        registration-date: block-height
+      }
+    )
+    (ok new-id)
+  )
+)
 
-;; constants
-;;
+(define-read-only (get-item (item-id uint))
+  (map-get? items { item-id: item-id })
+)
 
-;; data vars
-;;
-
-;; data maps
-;;
-
-;; public functions
-;;
-
-;; read only functions
-;;
-
-;; private functions
-;;
-
+(define-read-only (get-last-item-id)
+  (var-get last-item-id)
+)
