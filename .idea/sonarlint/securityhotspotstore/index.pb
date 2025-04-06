@@ -13,3 +13,5 @@ P
  contracts/ownership-history.clar,0/e/0edf1ee34608476b303e5bc65e74b7f9a78b03d6
 S
 #contracts/restoration-tracking.clar,f/9/f90c8925088bd091b425a1d92b40a5c365bc9444
+R
+"tests/restoration-tracking.test.ts,8/7/871c99dce4f26519b1e6bc00bf0ae453cd37be6f
