@@ -9,3 +9,5 @@ P
  contracts/item-registration.clar,8/0/80a083cd98ff576959a6cf8723657afdaeae6aac
 O
 tests/item-registration.test.ts,c/4/c4fb1bb0e7ef0f0de665a99f389d43c99341a25e
+P
+ contracts/ownership-history.clar,0/e/0edf1ee34608476b303e5bc65e74b7f9a78b03d6
